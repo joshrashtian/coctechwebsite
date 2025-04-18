@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "picsum.photos", //temp: for gallery image test
-        pathname: "/seed/picsum/**"
+        pathname: "/seed/**"
       }
     ]
   }

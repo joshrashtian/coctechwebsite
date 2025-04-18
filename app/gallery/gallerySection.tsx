@@ -5,9 +5,11 @@ interface GallerySectionProps {
 
 const GallerySection: React.FC<GallerySectionProps> = ({ title, children }) => {
   return (
-    <div className="grid justify-items-center my-24">
-      <h2 className="text-4xl my-12 font-semibold">{title}</h2>
-      <div className="grid w-296 justify-items-stretch grid-cols-3 m-6 gap-10">
+    <div className="max-w-[1200px] mx-auto">
+      <h2 className="text-4xl text-center my-12 font-semibold">{title}</h2>
+      <div className="grid w-full gap-4" style={{
+        gridTemplateColumns: "repeat(auto-fit, minmax(248px, 1fr))"
+      }}>
         {children}
       </div>
     </div>

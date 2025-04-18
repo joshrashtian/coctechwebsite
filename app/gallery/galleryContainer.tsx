@@ -9,28 +9,28 @@ interface GalleryContainerProps {
 
 const GalleryContainer: React.FC<GalleryContainerProps> = ({ name, img, alt, desc }) => {
   return (
-    <article className="w-full p-4 rounded-2xl outline-gray-500 outline-4">
+    <div className="p-3 rounded-lg bg-gray-800 cursor-pointer">
       {name ?
-        <header className="mb-2">
-          <h3>{name}</h3>
+        <header className="mb-3">
+          <h2 className="text-lg">{name}</h2>
         </header>
       : null}
-      <figure className="aspect-square relative mb-2">
+      <figure className="aspect-square relative select-none">
         {img ?
           <Image
             src={img}
             fill={true}
             alt={alt ? alt : ""}
-            className="rounded-xl"
+            className="rounded-lg"
            />
         : null}
       </figure>
       {desc ?
-        <footer>
-          <p>{desc}</p>
+        <footer className="mt-3">
+          <p className="text-sm">{desc}</p>
         </footer>
       : null}
-    </article>
+    </div>
   );
 }
 
