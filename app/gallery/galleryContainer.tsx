@@ -1,17 +1,37 @@
-export default function GalleryContainer() {
+import Image, { StaticImageData } from "next/image";
+
+interface GalleryContainerProps {
+  name?: string,
+  img?: string | StaticImageData,
+  alt?: string,
+  desc?: string
+}
+
+const GalleryContainer: React.FC<GalleryContainerProps> = ({ name, img, alt, desc }) => {
   return (
-    <>
-      <article className="flex-1 grow-1 p-8 outline-white outline-2">
-        <header>
-          <h3>Project #20</h3>
+    <article className="w-full p-4 rounded-2xl outline-gray-500 outline-4">
+      {name ?
+        <header className="mb-2">
+          <h3>{name}</h3>
         </header>
-        <figure>
-          <p>(Pretend there is an image gallery here)</p>
-        </figure>
+      : null}
+      <figure className="aspect-square relative mb-2">
+        {img ?
+          <Image
+            src={img}
+            fill={true}
+            alt={alt ? alt : ""}
+            className="rounded-xl"
+           />
+        : null}
+      </figure>
+      {desc ?
         <footer>
-          <p>Description</p>
+          <p>{desc}</p>
         </footer>
-      </article>
-    </>
+      : null}
+    </article>
   );
 }
+
+export default GalleryContainer;
