@@ -1,36 +1,54 @@
 import Image, { StaticImageData } from "next/image";
+import { Dispatch, SetStateAction } from "react";
+import { GalleryFullData } from "./galleryFull"
 
-interface GalleryContainerProps {
-  name?: string,
-  img?: string | StaticImageData,
-  alt?: string,
-  desc?: string
+export interface ImageItem {
+  src: string | StaticImageData,
+  alt?: string
 }
 
-const GalleryContainer: React.FC<GalleryContainerProps> = ({ name, img, alt, desc }) => {
+interface GalleryContainerProps {
+  title?: string;
+  images: ImageItem[];
+  shortDesc?: string;
+  fullDesc?: string;
+  setFullData: Dispatch<SetStateAction<GalleryFullData | undefined>>;
+  setFullOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+const GalleryContainer: React.FC<GalleryContainerProps> = ({ title, images, shortDesc, fullDesc, setFullData, setFullOpen }) => {
   return (
-    <div className="p-3 rounded-lg bg-gray-800 cursor-pointer">
-      {name ?
+    <button
+      className="p-3 rounded-lg bg-gray-800 cursor-pointer"
+      onClick={() => {
+        setFullData({
+          title: title,
+          images: images,
+          fullDesc: fullDesc
+        });
+        setFullOpen(true);
+      }}
+    >
+        {title ?
         <header className="mb-3">
-          <h2 className="text-lg">{name}</h2>
+          <h2 className="text-lg">{title}</h2>
         </header>
       : null}
       <figure className="aspect-square relative select-none">
-        {img ?
-          <Image
-            src={img}
-            fill={true}
-            alt={alt ? alt : ""}
-            className="rounded-lg"
-           />
-        : null}
+        <Image
+          src={images[0].src}
+          fill={true}
+          sizes="(max-width: 591px) 85vw, (max-width: 856px) 40vw, (max-width: 1120px) 30vw, 264px"
+          alt={images[0].alt || ""}
+          className="rounded-lg"
+        />
       </figure>
-      {desc ?
+      {shortDesc ?
         <footer className="mt-3">
-          <p className="text-sm">{desc}</p>
+          <p className="text-sm">{shortDesc}</p>
         </footer>
       : null}
-    </div>
+    </button>
   );
 }
 
