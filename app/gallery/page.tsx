@@ -32,10 +32,14 @@ export default function Gallery() {
               {
                 src: "https://picsum.photos/seed/uepir6vmyw/500",
                 alt: "Awesome sauce 1"
+              },
+              {
+                src: "https://picsum.photos/seed/testing123/1000/500",
+                alt: "this is a test"
               }
             ]}
             shortDesc="Awesome Short Description"
-            fullDesc="A full thoughtful description detailing the contents of said project in a informative and clear manner"
+            fullDesc="A full thoughtful description detailing the contents of said project in a informative and clear manner aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             onOpen={fullOpen}
           />
           <GalleryContainer
@@ -58,7 +62,7 @@ export default function Gallery() {
                 alt: "Awesome sauce 3"
               }
             ]}
-            shortDesc="Awesome"
+            shortDesc="AAAAAAAAAAWWWWWWWWWEEEEEEESSSSSSSSSSOOOOOOOOOMMMMMMMMMMEEEEEEEEEEEEEEE!!!!!!!!!!!!!"
             fullDesc="A full thoughtful description detailing the contents of said project in a informative and clear manner"
             onOpen={fullOpen}
           />

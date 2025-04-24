@@ -1,5 +1,4 @@
 import Image, { StaticImageData } from "next/image";
-//import { Dispatch, SetStateAction } from "react";
 import { GalleryFullData } from "./galleryFull";
 
 export interface ImageItem {
@@ -22,28 +21,30 @@ const GalleryContainer: React.FC<GalleryContainerProps> = ({ title, images, shor
 
   return (
     <button
-      className="p-3 rounded-lg bg-gray-800 cursor-pointer"
       onClick={handleClick}
+      style={{ all: "unset" }}
     >
-      {title && (
-        <header className="mb-3">
-          <h2 className="text-lg">{title}</h2>
-        </header>
-      )}
-      <figure className="aspect-square relative">
-        <Image
-          src={images[0].src}
-          fill={true}
-          sizes="(max-width: 591px) 85vw, (max-width: 856px) 40vw, (max-width: 1120px) 30vw, 264px"
-          alt={images[0].alt || ""}
-          className="rounded-lg"
-        />
-      </figure>
-      {shortDesc && (
-        <footer className="mt-3">
-          <p className="text-sm">{shortDesc}</p>
-        </footer>
-      )}
+      <div className="p-3 rounded-lg bg-gray-800 cursor-pointer in-focus-visible:outline-2 outline-sky-600">
+        {title && (
+          <header className="mb-3">
+            <h2 className="text-lg">{title}</h2>
+          </header>
+        )}
+        <figure className="aspect-square relative">
+          <Image
+            src={images[0].src}
+            fill={true}
+            sizes="(max-width: 591px) 85vw, (max-width: 856px) 40vw, (max-width: 1120px) 30vw, 264px"
+            alt={images[0].alt || ""}
+            className="rounded-lg object-cover"
+          />
+        </figure>
+        {shortDesc && (
+          <footer className="mt-3">
+            <p className="text-sm wrap-break-word">{shortDesc}</p>
+          </footer>
+        )}
+      </div>
     </button>
   );
 }
