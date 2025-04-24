@@ -1,10 +1,10 @@
 import Image, { StaticImageData } from "next/image";
-import { Dispatch, SetStateAction } from "react";
-import { GalleryFullData } from "./galleryFull"
+//import { Dispatch, SetStateAction } from "react";
+import { GalleryFullData } from "./galleryFull";
 
 export interface ImageItem {
-  src: string | StaticImageData,
-  alt?: string
+  src: string | StaticImageData;
+  alt?: string;
 }
 
 interface GalleryContainerProps {
@@ -12,29 +12,25 @@ interface GalleryContainerProps {
   images: ImageItem[];
   shortDesc?: string;
   fullDesc?: string;
-  setFullData: Dispatch<SetStateAction<GalleryFullData | undefined>>;
-  setFullOpen: Dispatch<SetStateAction<boolean>>;
+  onOpen: (data: GalleryFullData) => void;
 }
 
-const GalleryContainer: React.FC<GalleryContainerProps> = ({ title, images, shortDesc, fullDesc, setFullData, setFullOpen }) => {
+const GalleryContainer: React.FC<GalleryContainerProps> = ({ title, images, shortDesc, fullDesc, onOpen }) => {
+  const handleClick = () => {
+    onOpen({ title, images, fullDesc });
+  }
+
   return (
     <button
       className="p-3 rounded-lg bg-gray-800 cursor-pointer"
-      onClick={() => {
-        setFullData({
-          title: title,
-          images: images,
-          fullDesc: fullDesc
-        });
-        setFullOpen(true);
-      }}
+      onClick={handleClick}
     >
-        {title ?
+      {title && (
         <header className="mb-3">
           <h2 className="text-lg">{title}</h2>
         </header>
-      : null}
-      <figure className="aspect-square relative select-none">
+      )}
+      <figure className="aspect-square relative">
         <Image
           src={images[0].src}
           fill={true}
@@ -43,11 +39,11 @@ const GalleryContainer: React.FC<GalleryContainerProps> = ({ title, images, shor
           className="rounded-lg"
         />
       </figure>
-      {shortDesc ?
+      {shortDesc && (
         <footer className="mt-3">
           <p className="text-sm">{shortDesc}</p>
         </footer>
-      : null}
+      )}
     </button>
   );
 }

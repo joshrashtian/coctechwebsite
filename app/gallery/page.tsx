@@ -7,13 +7,20 @@ import GalleryFull, { GalleryFullData } from "./galleryFull";
 
 export default function Gallery() {
   const [fullData, setFullData] = useState<GalleryFullData | undefined>(undefined);
-  const [fullOpen, setFullOpen] = useState(false);
+
+  const fullOpen = (data: GalleryFullData) => {
+    setFullData(data);
+  }
+
+  const fullClose = () => {
+    setFullData(undefined);
+  }
 
   return (
     <>
       <GalleryFull
         data={fullData}
-        isOpen={fullOpen}
+        onClose={fullClose}
       />
       <div className="my-24 mx-10">
         <GallerySection
@@ -29,8 +36,7 @@ export default function Gallery() {
             ]}
             shortDesc="Awesome Short Description"
             fullDesc="A full thoughtful description detailing the contents of said project in a informative and clear manner"
-            setFullData={setFullData}
-            setFullOpen={setFullOpen}
+            onOpen={fullOpen}
           />
           <GalleryContainer
             title="Epic Awesome Project 2"
@@ -42,8 +48,7 @@ export default function Gallery() {
             ]}
             shortDesc="Awesome Short Description"
             fullDesc="A full thoughtful description detailing the contents of said project in a informative and clear manner"
-            setFullData={setFullData}
-            setFullOpen={setFullOpen}
+            onOpen={fullOpen}
           />
           <GalleryContainer
             title="Epic Awesome Project 3"
@@ -55,8 +60,7 @@ export default function Gallery() {
             ]}
             shortDesc="Awesome"
             fullDesc="A full thoughtful description detailing the contents of said project in a informative and clear manner"
-            setFullData={setFullData}
-            setFullOpen={setFullOpen}
+            onOpen={fullOpen}
           />
           <GalleryContainer
             title="Epic Awesome Project 4"
@@ -66,8 +70,7 @@ export default function Gallery() {
               }
             ]}
             shortDesc="Awesome Short Description"
-            setFullData={setFullData}
-            setFullOpen={setFullOpen}
+            onOpen={fullOpen}
           />
           <GalleryContainer
             title="Epic Awesome Project 5"
@@ -77,8 +80,7 @@ export default function Gallery() {
               }
             ]}
             shortDesc="Awesome Short Description"
-            setFullData={setFullData}
-            setFullOpen={setFullOpen}
+            onOpen={fullOpen}
           />
         </GallerySection>
         <GallerySection
@@ -91,8 +93,7 @@ export default function Gallery() {
                 alt: "testing 456"
               }
             ]}
-            setFullData={setFullData}
-            setFullOpen={setFullOpen}
+            onOpen={fullOpen}
           />
           <GalleryContainer
             images={[
@@ -101,8 +102,7 @@ export default function Gallery() {
               }
             ]}
             shortDesc="Interesting photo!"
-            setFullData={setFullData}
-            setFullOpen={setFullOpen}
+            onOpen={fullOpen}
           />
           <GalleryContainer
             images={[
@@ -110,8 +110,7 @@ export default function Gallery() {
                 src: "https://picsum.photos/seed/c8puk3czjud/650"
               }
             ]}
-            setFullData={setFullData}
-            setFullOpen={setFullOpen}
+            onOpen={fullOpen}
           />
           <GalleryContainer
             images={[
@@ -119,8 +118,7 @@ export default function Gallery() {
                 src: "https://picsum.photos/seed/2n3s8fgcn4d/750"
               }
             ]}
-            setFullData={setFullData}
-            setFullOpen={setFullOpen}
+            onOpen={fullOpen}
           />
           <GalleryContainer
             images={[
@@ -128,8 +126,7 @@ export default function Gallery() {
                 src: "https://picsum.photos/seed/7ikzbto5y2w/750"
               }
             ]}
-            setFullData={setFullData}
-            setFullOpen={setFullOpen}
+            onOpen={fullOpen}
           />
           <GalleryContainer
             images={[
@@ -138,8 +135,7 @@ export default function Gallery() {
               }
             ]}
             shortDesc="Interesting Photo!"
-            setFullData={setFullData}
-            setFullOpen={setFullOpen}
+            onOpen={fullOpen}
           />
         </GallerySection>
       </div>

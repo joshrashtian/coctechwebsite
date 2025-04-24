@@ -9,14 +9,20 @@ export interface GalleryFullData {
 
 export interface GalleryFullProps {
   data?: GalleryFullData;
-  isOpen: boolean;
+  onClose: () => void;
 }
 
-const GalleryFull: React.FC<GalleryFullProps> = ({ data, isOpen }) => {
+const GalleryFull: React.FC<GalleryFullProps> = ({ data, onClose }) => {
   if (!data) return null;
 
   return (
-    <article className="{{ isOpen ? 'block' : 'hidden' }} fixed z-50 justify-center bg-gray-700">
+    <article className="{{ isOpen ? 'block' : 'hidden' }} fixed z-50 bg-gray-700">
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 p-2 text-width hover:text-gray-300"
+      >
+        Close
+      </button>
       <h2>{data.title || ""}</h2>
       {data.images.map((image, index) => (
         <Image
