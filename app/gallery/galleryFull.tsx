@@ -38,7 +38,7 @@ const GalleryFull: React.FC<GalleryFullProps> = ({ data, onClose }) => {
                 src={image.src}
                 alt={image.alt || ""}
                 width={928} // max potential width
-                height={404} // max potential height
+                height={860} // max potential height
                 priority={index == 0}
                 className="h-full w-auto object-contain rounded-lg"
               />
