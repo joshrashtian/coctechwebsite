@@ -17,17 +17,17 @@ const GalleryFull: React.FC<GalleryFullProps> = ({ data, onClose }) => {
 
   return (
     <div
-      className="fixed z-50 w-4/5 max-w-233 h-4/5 max-h-175 p-7 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-gray-800 rounded-xl"
+      className="fixed z-50 w-4/5 max-w-233 h-4/5 max-h-175 p-7 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-zinc-700 rounded-xl"
     >
       <button
         onClick={onClose}
-        className="absolute -top-5 -right-7 p-2 bg-gray-400 rounded-full"
+        className="absolute z-150 -top-6 -right-6 py-3 px-5 bg-zinc-300 text-zinc-800 text-2xl font-mono cursor-pointer rounded-full"
       >
-        Close
+        X
       </button>
       <article className="flex flex-col h-full overflow-y-scroll overscroll-none">
         {data.title && (
-          <h2 className="sticky z-100 bg-gray-800 top-0 mb-1 pb-4 text-2xl text-center">
+          <h2 className="sticky z-100 top-0 mb-1 pb-4 text-2xl font-bold font-mono text-center bg-zinc-700">
             {data.title}
           </h2>
         )}
@@ -46,7 +46,7 @@ const GalleryFull: React.FC<GalleryFullProps> = ({ data, onClose }) => {
           ))}
         </figure>
         {data.fullDesc && (
-          <p className="mt-5 text-wrap break-words">
+          <p className="mt-5 text-wrap text-lg break-words">
             {data.fullDesc}
           </p>
         )}

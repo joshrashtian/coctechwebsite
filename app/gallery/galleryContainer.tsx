@@ -24,11 +24,9 @@ const GalleryContainer: React.FC<GalleryContainerProps> = ({ title, images, shor
       onClick={handleClick}
       style={{ all: "unset" }}
     >
-      <div className="p-3 rounded-lg bg-gray-800 cursor-pointer in-focus-visible:outline-2 outline-sky-600">
+      <div className="p-3 rounded-lg bg-zinc-200/35 cursor-pointer in-focus-visible:outline-2 outline-sky-600">
         {title && (
-          <header className="mb-3">
-            <h2 className="text-lg">{title}</h2>
-          </header>
+          <h2 className="mb-3 text-lg font-semibold">{title}</h2>
         )}
         <figure className="aspect-square relative">
           <Image
@@ -40,9 +38,7 @@ const GalleryContainer: React.FC<GalleryContainerProps> = ({ title, images, shor
           />
         </figure>
         {shortDesc && (
-          <footer className="mt-3">
-            <p className="text-sm wrap-break-word">{shortDesc}</p>
-          </footer>
+          <p className="mt-3 text-sm wrap-break-word">{shortDesc}</p>
         )}
       </div>
     </button>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from "react";
+import { DM_Sans } from "next/font/google";
 import GallerySection from "./gallerySection";
 import GalleryContainer from "./galleryContainer";
 import GalleryFull, { GalleryFullData } from "./galleryFull";
@@ -17,6 +18,11 @@ import star_s24_3 from "@/public/gallery/star-party-spring-2024-3.jpg";
 import star_s24_4 from "@/public/gallery/star-party-spring-2024-4.jpg";
 import cougar_24 from "@/public/gallery/cougar-fest-2024.jpg";
 
+const font = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
+
 export default function Gallery() {
   const [fullData, setFullData] = useState<GalleryFullData | undefined>(undefined);
 
@@ -29,12 +35,12 @@ export default function Gallery() {
   }
 
   return (
-    <>
+    <div className={`${font.className}`}>
       <GalleryFull
         data={fullData}
         onClose={fullClose}
       />
-      <div className="my-24 mx-10">
+      <div className="mt-48 mb-32 mx-10">
         <GallerySection
           title={"Projects"}
         >
@@ -132,6 +138,6 @@ export default function Gallery() {
           />
         </GallerySection>
       </div>
-    </>
+    </div>
   );
 }
