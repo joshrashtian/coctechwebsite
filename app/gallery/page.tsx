@@ -1,9 +1,27 @@
 'use client';
 
 import { useState } from "react";
+import { DM_Sans } from "next/font/google";
 import GallerySection from "./gallerySection";
 import GalleryContainer from "./galleryContainer";
 import GalleryFull, { GalleryFullData } from "./galleryFull";
+
+import game_volley_1 from "@/public/gallery/gamedev-volleyball-1.png";
+import game_volley_2 from "@/public/gallery/gamedev-volleyball-2.png";
+import game_snake from "@/public/gallery/gamedev-pysnake.png";
+import web_2024_site_1 from "@/public/gallery/webdev-2024-site-1.png"
+import web_2024_site_2 from "@/public/gallery/webdev-2024-site-2.png"
+import web_2024_site_3 from "@/public/gallery/webdev-2024-site-3.png"
+import star_s24_1 from "@/public/gallery/star-party-spring-2024-1.jpg";
+import star_s24_2 from "@/public/gallery/star-party-spring-2024-2.jpg";
+import star_s24_3 from "@/public/gallery/star-party-spring-2024-3.jpg";
+import star_s24_4 from "@/public/gallery/star-party-spring-2024-4.jpg";
+import cougar_24 from "@/public/gallery/cougar-fest-2024.jpg";
+
+const font = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
 
 export default function Gallery() {
   const [fullData, setFullData] = useState<GalleryFullData | undefined>(undefined);
@@ -17,69 +35,61 @@ export default function Gallery() {
   }
 
   return (
-    <>
+    <div className={`${font.className}`}>
       <GalleryFull
         data={fullData}
         onClose={fullClose}
       />
-      <div className="my-24 mx-10">
+      <div className="mt-48 mb-32 mx-10">
         <GallerySection
           title={"Projects"}
         >
           <GalleryContainer
-            title="Epic Awesome Project 1"
+            title="Game Dev Volleyball"
             images={[
               {
-                src: "https://picsum.photos/seed/uepir6vmyw/500",
-                alt: "Awesome sauce 1"
-              }
+                src: game_volley_1,
+                alt: "A volleyball game showing two players battling each other. The player on the left with the volleyball aims to get around the other player's defense."
+              },
+              {
+                src: game_volley_2,
+                alt: "A volleyball game showing two players battling each other. The player on the left with the volleyball aims to get around the other player's defense."
+              },
             ]}
-            shortDesc="Awesome Short Description"
-            fullDesc="A full thoughtful description detailing the contents of said project in a informative and clear manner"
+            shortDesc="Game Dev's 2024 volleyball project!"
+            fullDesc="COC Tech Club Game Dev presents their 2024 volleyball game! Programmed with Unity with C#, two players can duke it out on a sandy volleyball field battling to score the most points."
             onOpen={fullOpen}
           />
           <GalleryContainer
-            title="Epic Awesome Project 2"
+            title="Web Dev First Website"
             images={[
               {
-                src: "https://picsum.photos/seed/662xih81flv/300/200",
-                alt: "Awesome sauce 2"
+                src: web_2024_site_1,
+                alt: "The home page of the Web Dev's original club website with text in the middle showing \"Welcome to COC Tech Club!\" below a header showing the website title and a list of subpages to navigate to."
+              },
+              {
+                src: web_2024_site_2,
+                alt: "Further down the home page of the original club website showcasing the about section of the website introducing members to the club. The text reads \"We are a club for students who are interested in Computer Science, Software Engineering, and the tech industry. Our goal is to increase involvement in these fields outside of the academic courses offered at College of the Canyons\""
+              },
+              {
+                src: web_2024_site_3,
+                alt: "An image of the website's events page showcasing the date, time and location of a Club Meeting, the 2024 Spring Star Party, and a Bowling Event."
               }
             ]}
-            shortDesc="Awesome Short Description"
-            fullDesc="A full thoughtful description detailing the contents of said project in a informative and clear manner"
+            shortDesc="Web Dev's First Club Website!"
+            fullDesc="The COC Tech Club Web Dev team's first website made in 2024! A home website for the COC Tech Club made entirely in React utilizing Google Firebase as a backend to dynamically load Projects and Events and handle Join submissions."
             onOpen={fullOpen}
           />
           <GalleryContainer
-            title="Epic Awesome Project 3"
+            title="Game Dev PySnake"
             images={[
               {
-                src: "https://picsum.photos/seed/8897yw9jmlm/300/400",
-                alt: "Awesome sauce 3"
+                src: game_snake,
+                alt: "A snake game showing the snake with a score of 0 aiming to capture its first fruit."
               }
             ]}
-            shortDesc="Awesome"
-            fullDesc="A full thoughtful description detailing the contents of said project in a informative and clear manner"
-            onOpen={fullOpen}
-          />
-          <GalleryContainer
-            title="Epic Awesome Project 4"
-            images={[
-              {
-                src: "https://picsum.photos/seed/vt4u55o62rh/400"
-              }
-            ]}
-            shortDesc="Awesome Short Description"
-            onOpen={fullOpen}
-          />
-          <GalleryContainer
-            title="Epic Awesome Project 5"
-            images={[
-              {
-                src: "https://picsum.photos/seed/m63ugcdomu/500"
-              }
-            ]}
-            shortDesc="Awesome Short Description"
+            shortDesc="Game Dev's 2024 PySnake project!"
+            fullDesc="COC Tech Club Game Dev's 2024 snake game programmed in pure Python! Control the snake with the arrow keys to capture fruits increasing your score. If you hit the walls you lose! What's your high score?"
             onOpen={fullOpen}
           />
         </GallerySection>
@@ -89,8 +99,7 @@ export default function Gallery() {
           <GalleryContainer
             images={[
               {
-                src: "https://picsum.photos/seed/0v6qgxqjrwb/450",
-                alt: "testing 456"
+                src: star_s24_1
               }
             ]}
             onOpen={fullOpen}
@@ -98,16 +107,7 @@ export default function Gallery() {
           <GalleryContainer
             images={[
               {
-                src: "https://picsum.photos/seed/09kcm6qnqkot/550"
-              }
-            ]}
-            shortDesc="Interesting photo!"
-            onOpen={fullOpen}
-          />
-          <GalleryContainer
-            images={[
-              {
-                src: "https://picsum.photos/seed/c8puk3czjud/650"
+                src: star_s24_2
               }
             ]}
             onOpen={fullOpen}
@@ -115,7 +115,7 @@ export default function Gallery() {
           <GalleryContainer
             images={[
               {
-                src: "https://picsum.photos/seed/2n3s8fgcn4d/750"
+                src: star_s24_3
               }
             ]}
             onOpen={fullOpen}
@@ -123,7 +123,7 @@ export default function Gallery() {
           <GalleryContainer
             images={[
               {
-                src: "https://picsum.photos/seed/7ikzbto5y2w/750"
+                src: star_s24_4
               }
             ]}
             onOpen={fullOpen}
@@ -131,14 +131,13 @@ export default function Gallery() {
           <GalleryContainer
             images={[
               {
-                src: "https://picsum.photos/seed/a9e8ju4th9/750"
+                src: cougar_24
               }
             ]}
-            shortDesc="Interesting Photo!"
             onOpen={fullOpen}
           />
         </GallerySection>
       </div>
-    </>
+    </div>
   );
 }
