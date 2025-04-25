@@ -5,6 +5,9 @@ import GallerySection from "./gallerySection";
 import GalleryContainer from "./galleryContainer";
 import GalleryFull, { GalleryFullData } from "./galleryFull";
 
+import photo1 from "@/public/gallery/about-us-1.jpg";
+import photo2 from "@/public/gallery/who-are-we-game-1.png";
+
 export default function Gallery() {
   const [fullData, setFullData] = useState<GalleryFullData | undefined>(undefined);
 
@@ -30,16 +33,28 @@ export default function Gallery() {
             title="Epic Awesome Project 1"
             images={[
               {
+                src: photo1,
+                alt: "OwO whats twis?",
+              },
+              {
+                src: photo2,
+                alt: "lol",
+              },
+              {
                 src: "https://picsum.photos/seed/uepir6vmyw/500",
                 alt: "Awesome sauce 1"
               },
               {
                 src: "https://picsum.photos/seed/testing123/1000/500",
                 alt: "this is a test"
+              },
+              {
+                src: "https://picsum.photos/seed/anotherone/500",
+                alt: "another one"
               }
             ]}
             shortDesc="Awesome Short Description"
-            fullDesc="A full thoughtful description detailing the contents of said project in a informative and clear manner aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            fullDesc="What a nice set of photos! :D"
             onOpen={fullOpen}
           />
           <GalleryContainer
@@ -51,7 +66,7 @@ export default function Gallery() {
               }
             ]}
             shortDesc="Awesome Short Description"
-            fullDesc="A full thoughtful description detailing the contents of said project in a informative and clear manner"
+            fullDesc="A full thoughtful description detailing the contents of said project in a informative and clear manner aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             onOpen={fullOpen}
           />
           <GalleryContainer

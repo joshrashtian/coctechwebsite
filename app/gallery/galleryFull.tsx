@@ -21,29 +21,29 @@ const GalleryFull: React.FC<GalleryFullProps> = ({ data, onClose }) => {
     >
       <button
         onClick={onClose}
-        className="absolute -top-5 -right-7 p-2 bg-gray-400"
+        className="absolute -top-5 -right-7 p-2 bg-gray-400 rounded-full"
       >
         Close
       </button>
-      <article className="overflow-y-scroll max-h-full">
+      <article className="flex flex-col h-full overflow-y-scroll overscroll-none">
         {data.title && (
-          <h2 className="sticky z-100 bg-gray-800 top-0 mb-2 pb-3 text-2xl text-center">
+          <h2 className="sticky z-100 bg-gray-800 top-0 mb-1 pb-4 text-2xl text-center">
             {data.title}
           </h2>
         )}
-        <figure className="mx-auto overflow-x-scroll overflow-y-hidden whitespace-nowrap h-125">
-          <div className="relative inline-block w-1/6 -mr-3 h-full"></div>
+        <figure className="relative flex-1 min-h-48 overflow-x-scroll mx-auto flex flex-row gap-3">
           {data.images.map((image, index) => (
-            <div key={index} className="relative inline-block w-2/3 mx-3 h-full">
+            <div key={index} className="relative shrink-0 h-full flex items-center">
               <Image
                 src={image.src}
                 alt={image.alt || ""}
-                fill={true}
-                className="object-contain"
+                width={928} // max potential width
+                height={404} // max potential height
+                priority={index == 0}
+                className="h-full w-auto object-contain rounded-lg"
               />
             </div>
           ))}
-          <div className="relative inline-block w-1/6 -ml-3 h-full"></div>
         </figure>
         {data.fullDesc && (
           <p className="mt-5 text-wrap break-words">
