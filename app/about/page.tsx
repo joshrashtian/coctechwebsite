@@ -1,5 +1,7 @@
-import React from "react";
+"use client";
+import React, { useRef } from "react";
 import { DM_Sans } from "next/font/google";
+import { IoIosArrowForward } from "react-icons/io";
 
 const font = DM_Sans({
   subsets: ["latin"],
@@ -7,11 +9,11 @@ const font = DM_Sans({
 });
 
 const AboutPage = () => {
+  const missionRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div
-      className={`${font.className} flex flex-col min-h-screen p-8 pb-20 gap-5 sm:p-20`}
-    >
-      <section className="flex flex-col h-screen items-start justify-center gap-5">
+    <div className={`${font.className} flex flex-col min-h-screen`}>
+      <section className="flex flex-col h-screen items-start justify-center gap-5  p-8 pb-20 gap-5 sm:p-20">
         <h1 className="text-4xl font-bold font-mono">About Us</h1>
         <p className="text-2xl">
           The College of the Canyons&apos; Tech Club is a group of students who
@@ -24,9 +26,27 @@ const AboutPage = () => {
           The club is open to all students at College of the Canyons, and is
           open to all majors.
         </p>
+        <button
+          onClick={() => {
+            missionRef.current?.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }}
+          className="bg-zinc-200/30 group hover:bg-zinc-200/50 w-52 hover:w-60 transition-all duration-300 cursor-pointer rounded-md text-2xl p-2 px-4 font-mono flex items-center gap-2"
+        >
+          Learn More{" "}
+          <IoIosArrowForward className="group-hover:translate-x-2 transition-all duration-300" />
+        </button>
       </section>
-      <section className="flex flex-col h-screen items-start justify-center gap-5">
-        <h1 className="text-4xl font-bold font-mono">Our Mission</h1>
+      <section
+        ref={missionRef}
+        className="flex flex-col h-screen items-start justify-center p-8 pb-20 gap-5 sm:p-20"
+      >
+        <h1 className="text-4xl text-zinc-900/60 font-bold font-mono">
+          Our Mission
+        </h1>
+        <div className="w-full h-1 bg-zinc-900/30 rounded-full" />
         <p className="text-2xl">
           The mission of the club is to provide a place for coders, programmers,
           artists, gamers, to all come together and form a community.
