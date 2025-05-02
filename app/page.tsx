@@ -1,8 +1,12 @@
 import { MdGamepad, MdWeb } from "react-icons/md";
+import TopBegin from "./(components)/TopBegin";
 
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-8 pb-20 gap-5 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <section className="h-screen w-full bg-zinc-900/50 flex items-center justify-center">
+        <TopBegin />
+      </section>
       <h1 className="text-4xl font-bold font-mono">
         College of the Canyons&apos; Tech Club
       </h1>

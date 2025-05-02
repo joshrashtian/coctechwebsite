@@ -35,8 +35,8 @@ const NavBar = () => {
               className={`${font.className} py-4 px-6 lg:px-8 ${
                 isActive
                   ? "bg-white scale-110   text-zinc-900"
-                  : "text-zinc-900 "
-              }  text-md lg:text-2xl rounded-full hover:bg-zinc-400 hover:text-white hover:scale-105 drop-shadow-2xl duration-500`}
+                  : "text-zinc-900 hover:bg-zinc-400 hover:text-white "
+              }  text-md lg:text-2xl rounded-full  hover:scale-105 drop-shadow-2xl duration-500`}
             >
               <p
                 className={`${
