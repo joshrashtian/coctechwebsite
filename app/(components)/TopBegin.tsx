@@ -81,24 +81,6 @@ const TopBegin = () => {
         })}
       </ol>
       <ol className="my-1" />
-      <ol className="flex-row flex">
-        {`String fbgm = "Fuck Bitches, Get Mone";`.split("").map((c, i) => {
-          if (c === " ") {
-            return <ul key={i} className="mx-1" />;
-          }
-          return (
-            <motion.h1
-              key={i}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.01, delay: i * 0.1 + 3 }}
-            >
-              {c}
-            </motion.h1>
-          );
-        })}
-      </ol>
     </motion.section>
   );
 };
