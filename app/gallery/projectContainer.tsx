@@ -1,47 +1,42 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
+import Link from "next/link";
+import { ImageItemData } from "./imageItem";
 import { ProjectBigviewData } from "./projectBigview";
 
-export interface ImageItem {
-  src: string | StaticImageData;
-  alt?: string;
-}
-
-interface ProjectContainerProps {
-  title?: string;
-  images: ImageItem[];
-  shortDesc?: string;
-  fullDesc?: string;
+export interface ProjectContainerProps {
+  title: string;
+  images: ImageItemData[];
+  desc?: string;
+  bigDesc?: string;
   onOpen: (data: ProjectBigviewData) => void;
 }
 
-const ProjectContainer: React.FC<ProjectContainerProps> = ({ title, images, shortDesc, fullDesc, onOpen }) => {
+const ProjectContainer: React.FC<ProjectContainerProps> = ({ title, images, desc, bigDesc, onOpen }) => {
   const handleClick = () => {
-    onOpen({ title, images, fullDesc });
+    onOpen({ title, images, bigDesc });
   }
 
   return (
-    <button
+    <Link
+      className="p-3 rounded-lg bg-zinc-300/25 cursor-pointer in-focus-visible:outline-2 outline-sky-600"
+      href=""
       onClick={handleClick}
-      style={{ all: "unset" }}
+      scroll={false}
     >
-      <div className="p-3 rounded-lg bg-zinc-200/35 cursor-pointer in-focus-visible:outline-2 outline-sky-600">
-        {title && (
-          <h2 className="mb-3 text-lg font-mono font-semibold">{title}</h2>
-        )}
-        <figure className="aspect-square relative">
-          <Image
-            src={images[0].src}
-            fill={true}
-            sizes="(max-width: 608px) 85vw, (max-width: 887px) 42vw, (max-width: 1131px) 28vw, 321px"
-            alt={images[0].alt || ""}
-            className="rounded-lg object-cover"
-          />
-        </figure>
-        {shortDesc && (
-          <p className="mt-3 text-sm wrap-break-word">{shortDesc}</p>
-        )}
-      </div>
-    </button>
+      <h2 className="mb-3 text-lg font-mono font-semibold">{title}</h2>
+      <figure className="aspect-square relative">
+        <Image
+          className="rounded-lg object-cover"
+          src={images[0].src}
+          alt={images[0].alt || ""}
+          fill
+          sizes="(max-width: 608px) 85vw, (max-width: 887px) 42vw, (max-width: 1131px) 28vw, 321px"
+        />
+      </figure>
+      {desc && (
+        <p className="mt-3 text-sm wrap-break-word">{desc}</p>
+      )}
+    </Link>
   );
 }
 
