@@ -1,22 +1,32 @@
+import { useState } from "react";
 import GallerySection from "./gallerySection";
-import { ProjectBigviewData } from "./projectBigview";
+import ProjectModal, { ProjectModalData } from "./projectModal";
 import ProjectContainer, { ProjectContainerProps } from "./projectContainer";
 
 interface ProjectSectionProps {
-  projects: Omit<ProjectContainerProps, "onOpen">[];
-  onOpen: (data: ProjectBigviewData) => void;
+  projects: ProjectContainerProps[];
 }
 
-const ProjectSection: React.FC<ProjectSectionProps> = ({ projects, onOpen }) => {
+const ProjectSection: React.FC<ProjectSectionProps> = ({ projects }) => {
+  const [modalData, setModalData] = useState<ProjectModalData | undefined>(undefined);
+
+  const modalOpen = (data: ProjectModalData) => {
+    setModalData(data);
+    document.body.classList.add('overflow-hidden');
+  };
+  const modalClose = () => {
+    setModalData(undefined);
+    document.body.classList.remove('overflow-hidden');
+  };
+
   return (
     <GallerySection title="Projects">
-      <div className="grid w-full gap-5" style={{
-        gridTemplateColumns: "repeat(auto-fit, minmax(286px, 1fr))"
-      }}>
+      <ProjectModal data={modalData} onClose={modalClose} />
+      <div className="grid w-full mx-auto gap-5 sm:grid-cols-[repeat(auto-fit,minmax(clamp(100%/4,260px,100%/2),1fr))]">
         {projects.map((project, index) => (
           <ProjectContainer
             key={index}
-            onOpen={onOpen}
+            onOpen={modalOpen}
             {...project}
           />
         ))}

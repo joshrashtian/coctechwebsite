@@ -1,36 +1,35 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ImageItemData } from "./imageItem";
-import { ProjectBigviewData } from "./projectBigview";
+import { ProjectModalData } from "./projectModal";
 
 export interface ProjectContainerProps {
   title: string;
   images: ImageItemData[];
   desc?: string;
-  bigDesc?: string;
-  onOpen: (data: ProjectBigviewData) => void;
+  fullDesc?: string;
 }
 
-const ProjectContainer: React.FC<ProjectContainerProps> = ({ title, images, desc, bigDesc, onOpen }) => {
+const ProjectContainer: React.FC<ProjectContainerProps & { onOpen: (data: ProjectModalData) => void }> = ({ title, images, desc, fullDesc, onOpen }) => {
   const handleClick = () => {
-    onOpen({ title, images, bigDesc });
+    onOpen({ title, images, fullDesc });
   }
 
   return (
     <Link
-      className="p-3 rounded-lg bg-zinc-300/25 cursor-pointer in-focus-visible:outline-2 outline-sky-600"
+      className="w-full p-3 rounded-lg bg-zinc-300/25 cursor-pointer in-focus-visible:outline-2 outline-sky-600"
       href=""
       onClick={handleClick}
       scroll={false}
     >
       <h2 className="mb-3 text-lg font-mono font-semibold">{title}</h2>
-      <figure className="aspect-square relative">
+      <figure className="h-65 sm:h-max sm:aspect-square relative">
         <Image
           className="rounded-lg object-cover"
           src={images[0].src}
           alt={images[0].alt || ""}
           fill
-          sizes="(max-width: 608px) 85vw, (max-width: 887px) 42vw, (max-width: 1131px) 28vw, 321px"
+          sizes="(max-width: 640px) 86vw, (max-width: 884px) 42vw, (max-width: 1264px) 28vw, 362px"
         />
       </figure>
       {desc && (

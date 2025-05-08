@@ -1,19 +1,20 @@
 import Image from "next/image";
-import { ImageItemData } from "./page";
+import { ImageItemData } from "./imageItem";
 import { AnimatePresence, motion } from "motion/react";
 import { IoClose } from "react-icons/io5";
-export interface ProjectBigviewData {
+
+export interface ProjectModalData {
   title: string;
   images: ImageItemData[];
-  bigDesc?: string;
+  fullDesc?: string;
 }
 
-export interface ProjectBigviewProps {
-  data?: ProjectBigviewData;
+export interface ProjectModalProps {
+  data?: ProjectModalData;
   onClose: () => void;
 }
 
-const ProjectBigview: React.FC<ProjectBigviewProps> = ({ data, onClose }) => {
+const ProjectModal: React.FC<ProjectModalProps> = ({ data, onClose }) => {
   return (
     <AnimatePresence>
       {data && (
@@ -23,7 +24,7 @@ const ProjectBigview: React.FC<ProjectBigviewProps> = ({ data, onClose }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.15, ease: "easeOut" }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
             className="fixed z-200 backdrop-blur-sm bg-zinc-700/20 w-full h-full top-0 left-0"
           />
           <motion.div
@@ -31,7 +32,7 @@ const ProjectBigview: React.FC<ProjectBigviewProps> = ({ data, onClose }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 15 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed z-210 w-4/5 max-w-233 h-4/5 max-h-175 p-7 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-zinc-100 dark:bg-zinc-700 rounded-xl"
+            className="fixed z-210 w-9/10 sm:w-5/6 max-w-320 h-14/15 sm:h-5/6 max-h-200 p-7 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-zinc-100 dark:bg-zinc-700 rounded-xl"
           >
             <button
               onClick={onClose}
@@ -40,7 +41,7 @@ const ProjectBigview: React.FC<ProjectBigviewProps> = ({ data, onClose }) => {
               <IoClose />
             </button>
             <article className="flex flex-col h-full overflow-y-auto overscroll-none">
-              <h2 className="sticky z-100 top-0 mb-1 pb-4 text-2xl font-bold font-mono text-left">
+              <h2 className="sticky z-100 top-0 mb-1 pb-4 text-2xl font-bold font-mono text-left bg-zinc-100 dark:bg-zinc-700">
                 {data.title}
               </h2>
               <figure className="relative flex-1 min-h-48 snap-x snap-mandatory scroll-smooth overflow-x-auto mx-auto flex flex-row gap-3">
@@ -53,17 +54,17 @@ const ProjectBigview: React.FC<ProjectBigviewProps> = ({ data, onClose }) => {
                       className="h-full w-full object-cover object-center rounded-lg"
                       src={image.src}
                       alt={image.alt || ""}
-                      width={928} // max potential width
-                      height={860} // max potential height
+                      width={644} // max potential width
+                      height={644} // max potential height
                       priority={index == 0}
                       loading={index == 0 ? "eager" : "lazy"}
                     />
                   </div>
                 ))}
               </figure>
-              {data.bigDesc && (
+              {data.fullDesc && (
                 <p className="mt-5 text-wrap text-lg break-words">
-                  {data.bigDesc}
+                  {data.fullDesc}
                 </p>
               )}
             </article>
@@ -74,4 +75,4 @@ const ProjectBigview: React.FC<ProjectBigviewProps> = ({ data, onClose }) => {
   );
 };
 
-export default ProjectBigview;
+export default ProjectModal;

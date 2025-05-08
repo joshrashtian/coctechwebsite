@@ -8,7 +8,7 @@ interface PhotoSectionProps {
 const PhotoSection: React.FC<PhotoSectionProps> = ({ images }) => {
   return (
     <GallerySection title="Photos">
-      <ul className="flex flex-row flex-wrap gap-3 min-w-75">
+      <ul className="flex flex-row flex-wrap gap-3">
         {images.map((image, index) => (
           <li key={index} className="relative grow basis-auto h-80">
             <ImageItem
