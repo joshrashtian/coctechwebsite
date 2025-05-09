@@ -17,7 +17,7 @@ const ProjectContainer: React.FC<ProjectContainerProps & { onOpen: (data: Projec
 
   return (
     <Link
-      className="w-full p-3 rounded-lg bg-zinc-300/25 cursor-pointer in-focus-visible:outline-2 outline-sky-600"
+      className="w-full p-3 rounded-md bg-zinc-300/25 cursor-pointer in-focus-visible:outline-2 outline-sky-600"
       href=""
       onClick={handleClick}
       scroll={false}

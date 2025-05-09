@@ -22,7 +22,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ projects }) => {
   return (
     <GallerySection title="Projects">
       <ProjectModal data={modalData} onClose={modalClose} />
-      <div className="grid w-full mx-auto gap-5 sm:grid-cols-[repeat(auto-fit,minmax(clamp(100%/4,260px,100%/2),1fr))]">
+      <div className="grid w-full mx-auto gap-4 sm:grid-cols-[repeat(auto-fit,minmax(clamp(100%/4,260px,100%/2),1fr))]">
         {projects.map((project, index) => (
           <ProjectContainer
             key={index}

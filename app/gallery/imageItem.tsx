@@ -7,15 +7,17 @@ export interface ImageItemData {
 }
 
 interface ImageItemProps {
+  className?: string | undefined;
   imageData: ImageItemData;
   imageProps: Omit<ImageProps, "src" | "alt">;
 }
 
-const ImageItem: React.FC<ImageItemProps> = ({ imageData, imageProps }) => {
+const ImageItem: React.FC<ImageItemProps> = ({ className, imageData, imageProps }) => {
   return (
     <Link
       href=""
       scroll={false}
+      className={className}
     >
       <Image
         src={imageData.src}

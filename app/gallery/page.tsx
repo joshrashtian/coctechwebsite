@@ -32,6 +32,22 @@ export default function Gallery() {
               {
                 src: "https://picsum.photos/500",
                 alt: "Sand."
+              },
+              {
+                src: "https://picsum.photos/600/200",
+                alt: "Yerp."
+              },
+              {
+                src: "https://picsum.photos/200/600",
+                alt: "Gurt:"
+              },
+              {
+                src: "https://picsum.photos/700/500",
+                alt: "Yo:"
+              },
+              {
+                src: "https://picsum.photos/400/550",
+                alt: "Sybau:"
               }
             ],
             desc: "Game Dev's 2024 Sand Simulation!",

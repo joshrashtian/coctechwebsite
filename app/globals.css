@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+  --color-zinc-133: color-mix(in srgb, var(--color-zinc-100), var(--color-zinc-200) 33%);
+  --color-zinc-733: color-mix(in srgb, var(--color-zinc-700), var(--color-zinc-800) 33%);
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
