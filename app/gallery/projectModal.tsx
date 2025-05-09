@@ -1,6 +1,7 @@
 import ImageItem, { ImageItemData } from "./imageItem";
 import { AnimatePresence, motion } from "motion/react";
 import { IoClose } from "react-icons/io5";
+import { useRef, useEffect, useState, useCallback } from "react";
 
 export interface ProjectModalData {
   title: string;
@@ -14,6 +15,65 @@ export interface ProjectModalProps {
 }
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ data, onClose }) => {
+  const figureRef = useRef<HTMLElement>(null);
+  const [imageMargins, setImageMargins] = useState<{
+    first: string;
+    last: string;
+  }>({ first: "0", last: "0"})
+  const [firstImageLoaded, setFirstImageLoaded] = useState(false);
+  const [lastImageLoaded, setLastImageLoaded] = useState(false);
+
+  const updateMargins = useCallback(() => {
+    if (figureRef.current) {
+      const firstImage = figureRef.current.firstElementChild as HTMLElement;
+      const lastImage = figureRef.current.lastElementChild as HTMLElement;
+
+      if (firstImage && firstImageLoaded) {
+        setImageMargins(prev => ({
+          ...prev,
+          first: `calc(50% - ${firstImage.clientWidth}px / 2)`
+        }));
+      }
+
+      if (lastImage && lastImageLoaded) {
+        setImageMargins(prev => ({
+          ...prev,
+          last: `calc(50% - ${lastImage.clientWidth}px / 2)`
+        }));
+      }
+    }
+  }, [figureRef, firstImageLoaded, lastImageLoaded]);
+
+  // Reset loaded images counters when data changes
+  useEffect(() => {
+    if (data) {
+      setFirstImageLoaded(false);
+      setLastImageLoaded(false);
+    }
+  }, [data]);
+
+  // Effect to update margins when first or last images are loaded or on resize
+  useEffect(() => {
+    if (data) {
+      // Update margins whenever first or last image loads
+      updateMargins();
+
+      // Debounce function for resize event
+      let resizeTimer: NodeJS.Timeout;
+      const debouncedResize = () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(updateMargins, 100);
+      };
+
+      // Update on resize with debounce
+      window.addEventListener('resize', debouncedResize);
+      return () => {
+        window.removeEventListener('resize', debouncedResize);
+        clearTimeout(resizeTimer);
+      };
+    }
+  }, [data, firstImageLoaded, lastImageLoaded, updateMargins]);
+
   return (
     <AnimatePresence>
       {data && (
@@ -44,21 +104,37 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ data, onClose }) => {
                 {data.title}
               </h2>
               <div className="flex flex-col justify-center m-auto w-9/10 h-4/5 p-4 bg-[var(--color-zinc-133)] dark:bg-[var(--color-zinc-733)] rounded-lg">
-                <figure className="flex flex-row min-h-48 h-9/10 mb-3 gap-16 overflow-x-scroll snap-x snap-mandatory snap-always overscroll-none" style={{ scrollbarWidth: "none" }}>
+                <figure
+                  ref={figureRef}
+                  className="flex flex-row min-h-48 h-9/10 mb-3 gap-6 sm:gap-16 overflow-x-scroll snap-x snap-mandatory snap-always"
+                  style={{
+                    '--first-image-margin': imageMargins.first,
+                    '--last-image-margin': imageMargins.last,
+                    scrollbarWidth: 'none'
+                } as React.CSSProperties}
+              >
                   {data.images.map((image, index) => (
                     <ImageItem
                       key={index}
-                      className="relative max-w-3/4 h-full first:ml-[37.5%] last:mr-[37.5%] shrink-0 snap-center"
                       imageData={{
                         src: image.src,
                         alt: image.alt
+                      }}
+                      linkProps={{
+                        href: "",
+                        scroll: false,
+                        className: "relative max-w-14/15 sm:max-w-3/4 h-full shrink-0 snap-center first:ml-[var(--first-image-margin)] last:mr-[var(--last-image-margin)]",
                       }}
                       imageProps={{
                         className: "w-full h-full object-cover object-center rounded-lg",
                         width: 500,
                         height: 500,
                         priority: (index == 0),
-                        loading: (index == 0 ? "eager" : "lazy")
+                        loading: (index == 0 ? "eager" : "lazy"),
+                        onLoad: () => {
+                          if (index === 0) setFirstImageLoaded(true);
+                          if (index === data.images.length - 1) setLastImageLoaded(true);
+                        }
                       }}
                     />
                   ))}

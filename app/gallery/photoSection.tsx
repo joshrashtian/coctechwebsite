@@ -16,6 +16,10 @@ const PhotoSection: React.FC<PhotoSectionProps> = ({ images }) => {
                 src: image.src,
                 alt: image.alt,
               }}
+              linkProps={{
+                href: "",
+                scroll: false
+              }}
               imageProps={{
                 className: "object-cover h-full w-full rounded-sm",
                 width: "1200",

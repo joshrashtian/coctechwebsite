@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 import Image, { ImageProps, StaticImageData } from "next/image";
 
 export interface ImageItemData {
@@ -7,18 +7,14 @@ export interface ImageItemData {
 }
 
 interface ImageItemProps {
-  className?: string | undefined;
   imageData: ImageItemData;
+  linkProps: Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof LinkProps> & LinkProps & React.RefAttributes<HTMLAnchorElement>;
   imageProps: Omit<ImageProps, "src" | "alt">;
 }
 
-const ImageItem: React.FC<ImageItemProps> = ({ className, imageData, imageProps }) => {
+const ImageItem: React.FC<ImageItemProps> = ({ imageData, linkProps, imageProps }) => {
   return (
-    <Link
-      href=""
-      scroll={false}
-      className={className}
-    >
+    <Link {...linkProps}>
       <Image
         src={imageData.src}
         alt={imageData.alt || ""}

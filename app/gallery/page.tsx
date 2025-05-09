@@ -87,12 +87,18 @@ export default function Gallery() {
             title: "TechClub Volleyball",
             images: [
               {
+                src: "https://picsum.photos/300/1000"
+              },
+              {
                 src: game_volley_1,
                 alt: "A volleyball game showing two players battling each other. The player on the left with the volleyball aims to get around the other player's defense."
               },
               {
                 src: game_volley_2,
                 alt: "A volleyball game showing two players battling each other. The player on the left with the volleyball aims to get around the other player's defense."
+              },
+              {
+                src: "https://picsum.photos/1000/300"
               }
             ],
             desc: "Game Dev's 2024 Volleyball project!",
