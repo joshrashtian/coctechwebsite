@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ImageItemData } from "./imageItem";
 import { ProjectModalData } from "./projectModal";
+import { memo } from "react";
 
 export interface ProjectContainerProps {
   title: string;
@@ -39,4 +40,4 @@ const ProjectContainer: React.FC<ProjectContainerProps & { onOpen: (data: Projec
   );
 }
 
-export default ProjectContainer;
+export default memo(ProjectContainer);

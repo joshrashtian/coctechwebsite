@@ -23,7 +23,7 @@ const font = DM_Sans({
 
 export default function Gallery() {
   return (
-    <div className={`${font.className} mt-52 mb39 mx-8`}>
+    <div className={`${font.className} mt-52 mb-39 mx-8`}>
       <ProjectSection
         projects={[
           {
@@ -80,7 +80,7 @@ export default function Gallery() {
                 alt: "An image of the website's events page showcasing the date, time and location of a Club Meeting, the 2024 Spring Star Party, and a Bowling Event."
               }
             ],
-            desc: "Game Dev's 2024 PySnake project!",
+            desc: "Web Dev's First TechClub Homepage!",
             fullDesc: "The COC Tech Club Web Dev team's first website made in 2024! A home website for the COC Tech Club made entirely in React utilizing Google Firebase as a backend to dynamically load Projects and Events and handle Join submissions."
           },
           {

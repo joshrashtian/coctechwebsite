@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, memo } from 'react';
 
 interface GallerySectionProps {
   title: string;
@@ -16,4 +16,4 @@ const GallerySection: React.FC<GallerySectionProps> = ({ title, children }) => {
   );
 };
 
-export default GallerySection;
+export default memo(GallerySection);
