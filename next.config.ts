@@ -9,8 +9,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "picsum.photos", //temp: for gallery image test
-        pathname: "/seed/**"
+        hostname: "picsum.photos" //temp: for gallery image test
       }
     ]
   }
